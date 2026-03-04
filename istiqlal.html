@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Istiqlal ⬥ Jakarta</title>
+    <!-- Anti-copy and DevTools protection -->
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+        document.addEventListener('copy', function(e) { e.preventDefault(); return false; });
+        document.addEventListener('cut', function(e) { e.preventDefault(); return false; });
+        document.addEventListener('paste', function(e) { e.preventDefault(); return false; });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'J') || (e.ctrlKey && e.shiftKey && e.key === 'C') || (e.ctrlKey && e.shiftKey && e.key === 'K') || (e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.key === 'U') || (e.ctrlKey && e.key === 's') || (e.ctrlKey && e.key === 'p') || (e.ctrlKey && e.shiftKey && e.key === 'E') || (e.ctrlKey && e.shiftKey && e.key === 'F') || (e.ctrlKey && e.shiftKey && e.key === 'M') || (e.ctrlKey && e.shiftKey && e.key === 'N')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        (function() {
+            var checkDevTools = function() {
+                var threshold = 160;
+                if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+                    document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#0A0806;color:#C9A84C;font-family:sans-serif;text-align:center;padding:20px;"><div><h1>Developer Tools Detected</h1><p>Please close developer tools to continue viewing this site.</p></div></div>';
+                }
+            };
+            setInterval(checkDevTools, 1000);
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E8CB7A;
+            --gold-dim: rgba(201, 168, 76, 0.25);
+            --white: #F5F0E8;
+            --cream: #EDE3D0;
+            --dark: #0A0806;
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        /* ─── HERO WRAPPER ─── */
+        .hero {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Barlow', sans-serif;
+        }
+
+        /* ─── LAYER 1: SKY BACKGROUND ─── */
+        .layer-sky {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: url('image/bg/sky.jpg') center/cover no-repeat;
+            /* Cinematic fallback gradient if image missing */
+            background-color: #1a0e05;
+        }
+
+        /* ─── LAYER 2: HUGE GHOST TITLE ─── */
+        .layer-ghost-title {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            top: -25%;
+        }
+
+        .ghost-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 900;
+            font-size: clamp(11vw, 19vw, 25vw);
+            color: #ffffff;
+            opacity: 0.5;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            line-height: 1;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        /* ─── LAYER 3: PYRAMID IMAGE ─── */
+        .layer-pyramid {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            background: url('image/place/istiqlal.png') center bottom/cover no-repeat;
+            background-color: transparent;
+        }
+
+        /* ─── LAYER 4: DARK OVERLAY ─── */
+        .layer-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.55) 0%,
+                    rgba(0, 0, 0, 0.28) 40%,
+                    rgba(0, 0, 0, 0.15) 60%,
+                    rgba(0, 0, 0, 0.62) 100%);
+        }
+
+        /* ─── LAYER 5+: UI CONTENT ─── */
+        .layer-ui {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ─── NAVIGATION ─── */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 48px;
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--white);
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            margin-bottom: 1px;
+        }
+
+        .nav-pill {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 8px 12px;
+            box-shadow: 0 8px 32px var(--glass-shadow);
+        }
+
+        .nav-pill a {
+            color: rgba(245, 240, 232, 0.78);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 7px 18px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-pill a:hover,
+        .nav-pill a.active {
+            color: var(--dark);
+            background: var(--white);
+        }
+
+        .nav-pill a.active {
+            color: var(--dark);
+            background: var(--white);
+        }
+
+        .btn-contact {
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--dark);
+            background: var(--gold);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 26px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+        }
+
+        .btn-contact:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201, 168, 76, 0.5);
+        }
+
+        /* ─── MAIN CONTENT ─── */
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 48px 52px;
+        }
+
+        .hero-inner {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            width: 100%;
+            gap: 24px;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 520px;
+        }
+
+        /* ─── EYEBROW ─── */
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .eyebrow-line {
+            width: 32px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .eyebrow-text {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        /* ─── HEADLINE ─── */
+        .hero-headline {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+            color: var(--white);
+            line-height: 1.08;
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
+        }
+
+        .hero-headline strong {
+            font-weight: 700;
+            display: block;
+            color: var(--cream);
+        }
+
+        .hero-subline {
+            font-size: 0.82rem;
+            font-weight: 300;
+            color: rgba(245, 240, 232, 0.55);
+            letter-spacing: 0.05em;
+            line-height: 1.7;
+            max-width: 320px;
+            margin-bottom: 30px;
+        }
+
+        /* ─── BUTTONS ─── */
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+        }
+
+        .btn-book {
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--dark);
+            background: var(--gold);
+            border: none;
+            border-radius: 50px;
+            padding: 14px 36px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            box-shadow: 0 6px 28px rgba(201, 168, 76, 0.4);
+        }
+
+        .btn-book:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(201, 168, 76, 0.55);
+        }
+
+        .btn-view {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: black;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 13px 28px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+        }
+
+        .btn-view:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.22);
+            transform: translateY(-3px);
+        }
+
+        .btn-view a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .btn-book a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .btn-contact {
+            padding: 16px 26px;
+            color: var(--dark);
+            text-decoration: none !important;
+        }
+
+        .btn-view .arrow-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-view:hover .arrow-icon {
+            transform: rotate(-45deg);
+        }
+
+        .btn-view .arrow-icon svg {
+            width: 10px;
+            height: 10px;
+            fill: none;
+            stroke: black;
+            stroke-width: 2;
+        }
+
+        /* ─── TAGLINE ─── */
+        .hero-tagline {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: rgba(245, 240, 232, 0.38);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .hero-tagline span {
+            color: var(--gold);
+        }
+
+        /* ─── STATS ─── */
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 28px;
+            padding-bottom: 6px;
+        }
+
+        .stats-row {
+            position: absolute;
+            bottom: 60px;
+            left: 37%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: flex-end;
+            gap: 32px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            opacity: 0;
+            transform: translateY(14px);
+            animation: statFadeIn 0.7s ease forwards;
+        }
+
+        .stat-item:nth-child(1) {
+            animation-delay: 1s;
+        }
+
+        .stat-item:nth-child(2) {
+            animation-delay: 1.15s;
+        }
+
+        .stat-item:nth-child(3) {
+            animation-delay: 1.3s;
+        }
+
+        @keyframes statFadeIn {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.12);
+            margin-bottom: 4px;
+        }
+
+        .stat-num {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: var(--white);
+            line-height: 1;
+            letter-spacing: -0.01em;
+        }
+
+        .stat-num span {
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, 0.45);
+        }
+
+        /* ─── BOTTOM-RIGHT CARD ─── */
+        .preview-card {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 20px 56px rgba(0, 0, 0, 0.5);
+            min-width: 260px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+        }
+
+        .preview-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 28px 64px rgba(0, 0, 0, 0.6);
+        }
+
+        .card-thumb {
+            width: 100%;
+            height: 120px;
+            border-radius: 14px;
+            background: center/cover no-repeat;
+            background-color: #2a1e0e;
+            overflow: hidden;
+            flex-shrink: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card-thumb.fading {
+            opacity: 0.7;
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+            padding: 0 4px;
+        }
+
+        .card-destination {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--white);
+            letter-spacing: 0.04em;
+        }
+
+        .card-description {
+            font-size: 0.72rem;
+            font-weight: 300;
+            color: rgba(245, 240, 232, 0.5);
+            letter-spacing: 0.04em;
+            line-height: 1.5;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-location {
+            font-size: 0.72rem;
+            font-weight: 400;
+            color: rgba(245, 240, 232, 0.5);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .card-pagination {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.06em;
+        }
+
+        .card-progress {
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+
+        .card-progress-fill {
+            width: 10%;
+            height: 100%;
+            background: var(--gold);
+            border-radius: 1px;
+            transition: width 0.8s ease;
+        }
+
+        /* ─── ENTRANCE ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .layer-sky {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .layer-pyramid {
+            animation: fadeIn 1.2s 0.2s ease both;
+        }
+
+        .eyebrow {
+            animation: fadeUp 0.7s 0.4s ease both;
+            opacity: 0;
+        }
+
+        .hero-headline {
+            animation: fadeUp 0.8s 0.55s ease both;
+            opacity: 0;
+        }
+
+        .hero-subline {
+            animation: fadeUp 0.7s 0.7s ease both;
+            opacity: 0;
+        }
+
+        .hero-actions {
+            animation: fadeUp 0.7s 0.85s ease both;
+            opacity: 0;
+        }
+
+        .hero-tagline {
+            animation: fadeUp 0.7s 1s ease both;
+            opacity: 0;
+        }
+
+        .stats-row {
+            animation: fadeUp 0.7s 0.9s ease both;
+            opacity: 0;
+        }
+
+        .preview-card {
+            animation: fadeUp 0.7s 1.1s ease both;
+            opacity: 0;
+        }
+
+        nav {
+            animation: fadeIn 0.8s 0.1s ease both;
+            opacity: 0;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            nav {
+                padding: 20px 24px;
+            }
+
+            .nav-pill a {
+                padding: 6px 12px;
+                font-size: 0.72rem;
+            }
+
+            .hero-content {
+                padding: 0 24px 36px;
+            }
+
+            .hero-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+            }
+
+            .hero-right {
+                align-items: flex-start;
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .stats-row {
+                gap: 20px;
+            }
+
+            .preview-card {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .scroll-hint {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-pill {
+                display: none;
+            }
+
+            .nav-logo {
+                font-size: 1rem;
+            }
+
+            .hero-headline {
+                font-size: clamp(2.2rem, 9vw, 3rem);
+            }
+
+            .ghost-title {
+                font-size: 36vw;
+            }
+
+            .hero-right {
+                flex-direction: column;
+            }
+
+            .preview-card {
+                max-width: 100%;
+            }
+        }
+
+        /* ─── VIGNETTE ─── */
+        .vignette {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.65) 100%);
+            pointer-events: none;
+        }
+
+        /* ─── GRAIN OVERLAY ─── */
+        .grain {
+            position: absolute;
+            inset: 0;
+            z-index: 6;
+            pointer-events: none;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-size: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <!-- Layer 1: Sky -->
+        <div class="layer-sky" data-aos="fade-in" data-aos-duration="1500"></div>
+
+        <!-- Layer 2: Ghost Title -->
+        <div class="layer-ghost-title" data-aos="fade-down" data-aos-delay="300" data-aos-duration="1200">
+            <span class="ghost-title">ISTIQLAL</span>
+        </div>
+
+        <!-- Layer 3: Pyramid -->
+        <div class="layer-pyramid" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1500"></div>
+
+        <!-- Layer 4: Dark Overlay -->
+        <div class="layer-overlay"></div>
+        <div class="vignette"></div>
+
+        <!-- Grain texture -->
+        <div class="grain"></div>
+
+        <!-- Layer 5: UI Content -->
+        <div class="layer-ui">
+
+            <!-- Navigation -->
+            <nav data-aos="fade-down" data-aos-delay="200" data-aos-duration="800">
+                <a href="index.html" class="nav-logo">
+                    <span></span>Alfiz
+                </a>
+
+                <div class="nav-pill">
+                    <a href="baiturrahman.html">Aceh</a>
+                    <a href="istiqlal.html" class="active">Indonesia</a>
+                    <a href="kakbah.html">Mekkah</a>
+                    <a href="egypt.html">Mesir</a>
+                </div>
+
+                <a href="https://www.alfizilham.my.id" target="_blank" class="btn-contact">Contact</a>
+            </nav>
+
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <div class="hero-inner">
+
+                    <!-- Left: Headline + Buttons -->
+                    <div class="hero-left">
+
+                        <div class="eyebrow">
+                            <div class="eyebrow-line"></div>
+                            <span class="eyebrow-text">Featured Destination</span>
+                        </div>
+
+                        <div class="hero-actions">
+                            <button class="btn-book">
+                                <a href="https://www.alfizilham.my.id" target="_blank">Book Now</a>
+                            </button>
+                            <button class="btn-view">
+                                <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fid.wikipedia.org%2Fwiki%2FMasjid_Istiqlal%2C_Jakarta&psig=AOvVaw2sjB0JKFILEIEl3ZKxaujN&ust=1772695950127000&source=images&cd=vfe&opi=89978449&ved=0CBgQjhxqFwoTCPi0643dhZMDFQAAAAAdAAAAABAE" target="_blank">View</a>
+                                <span class="arrow-icon">
+                                    <svg viewBox="0 0 12 12">
+                                        <line x1="2" y1="10" x2="10" y2="2" />
+                                        <polyline points="4,2 10,2 10,8" />
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+
+                        <p class="hero-tagline">
+                            Curated journeys · <span>Est. 2008</span> · Worldwide
+                        </p>
+
+                    </div>
+
+                    <!-- Right: Stats + Card -->
+                    <div class="hero-right">
+
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <span class="stat-num">20K<span>+</span></span>
+                                <span class="stat-label">Happy Travelers</span>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <span class="stat-num">2K<span>+</span></span>
+                                <span class="stat-label">Destinations</span>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <span class="stat-num">5K<span>+</span></span>
+                                <span class="stat-label">Reviews</span>
+                            </div>
+                        </div>
+
+                        <!-- Preview Card -->
+                        <div class="preview-card" id="previewCard" data-aos="fade-left" data-aos-delay="800">
+                            <div class="card-thumb"></div>
+                            <div class="card-info">
+                                <span class="card-destination">Giza Plateau</span>
+                                <span class="card-description">Experience the ancient wonders</span>
+                                <div class="card-meta">
+                                    <span class="card-location">Cairo, Egypt</span>
+                                    <span class="card-pagination" id="pagination">01/10</span>
+                                </div>
+                                <div class="card-progress">
+                                    <div class="card-progress-fill" id="progressFill"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        // Destination pagination
+        const destinations = [
+            {
+                name: "Masjid Istiqlal Main Hall",
+                location: "Central Jakarta, Indonesia",
+                image: "https://images.trvl-media.com/place/6223399/74f074d8-e322-4183-8290-8e3ecaa8b53c.jpg"
+            },
+            {
+                name: "Istiqlal Courtyard",
+                location: "Jakarta, Indonesia",
+                image: "https://asset.kompas.com/crops/yj8pQhICbg92P39R4yHyusGaly4=/0x0:0x0/1200x800/data/photo/2021/01/08/5ff832ce30ef1.jpg"
+            },
+            {
+                name: "Grand Dome Interior",
+                location: "Masjid Istiqlal",
+                image: "https://img.freepik.com/premium-photo/grand-dome-interior-historical-basilica-geometric-gold-detail_501731-14930.jpg"
+            },
+            {
+                name: "Minaret Tower View",
+                location: "Istiqlal Mosque Complex",
+                image: "https://thumbs.dreamstime.com/b/minaret-tower-istanbul-turkey-bottom-up-view-minaret-istanbul-turkey-featuring-traditional-brickwork-architectural-437459408.jpg"
+            },
+            {
+                name: "Evening at Istiqlal",
+                location: "Central Jakarta",
+                image: "https://images.pexels.com/photos/6268451/pexels-photo-6268451.jpeg"
+            },
+            {
+                name: "Jakarta Cathedral",
+                location: "Across Istiqlal Mosque",
+                image: "https://marclanhotels.com/wp-content/uploads/2025/05/Katedral-Jakarta.jpg"
+            },
+            {
+                name: "Monas",
+                location: "National Monument, Jakarta",
+                image: "https://www.iwarebatik.org/wp-content/uploads/2019/11/monas.jpg"
+            },
+            {
+                name: "Lapangan Banteng Park",
+                location: "Central Jakarta",
+                image: "https://ekaputrawisata.com/wp-content/uploads/2025/01/Lapangan-Banteng-Park-Events-Activities-and-How-to-Visit.webp"
+            },
+            {
+                name: "Istiqlal at Sunset",
+                location: "Jakarta, Indonesia",
+                image: "https://thumbs.dreamstime.com/b/sunset-view-above-istiqlal-mosque-katedral-church-sunset-view-above-istiqlal-mosque-katedral-church-sunset-istiqlal-163516453.jpg"
+            },
+            {
+                name: "Jakarta Skyline",
+                location: "Indonesia",
+                image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Jakarta_Skyline_Part_2.jpg"
+            }
+        ];
+
+        let current = 0;
+
+        function updateCard(index, animate = true) {
+            const d = destinations[index];
+            const thumb = document.querySelector('.card-thumb');
+
+            if (animate) {
+                // Add fade effect
+                thumb.classList.add('fading');
+                setTimeout(() => {
+                    thumb.style.backgroundImage = `url('${d.image}')`;
+                    thumb.classList.remove('fading');
+                }, 200);
+            } else {
+                thumb.style.backgroundImage = `url('${d.image}')`;
+            }
+
+            document.querySelector('.card-destination').textContent = d.name;
+            document.querySelector('.card-location').textContent = d.location;
+            document.getElementById('pagination').textContent =
+                String(index + 1).padStart(2, '0') + '/' + String(destinations.length).padStart(2, '0');
+            document.getElementById('progressFill').style.width =
+                ((index + 1) / destinations.length * 100) + '%';
+        }
+
+        // Initialize card with first destination image
+        updateCard(0, false);
+
+        document.getElementById('previewCard').addEventListener('click', () => {
+            current = (current + 1) % destinations.length;
+            updateCard(current);
+        });
+
+        // Nav active state
+        document.querySelectorAll('.nav-pill a').forEach(link => {
+            link.addEventListener('click', e => {
+                document.querySelectorAll('.nav-pill a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,615 @@
+<!-- 
+    ==========================================================================
+    RESPONSIVE NAVIGATION & UI COMPONENTS
+    Consolidated from: istiqlal.html, kakbah.html, egypt.html, baiturrahman.html
+    ==========================================================================
+    
+    USAGE:
+    1. Link this CSS file in your HTML <head>:
+       <link rel="stylesheet" href="responsive.css">
+       
+    2. Include the navigation HTML in your <body>:
+       <!-- Navigation (see HTML section below) -->
+       
+    3. Include the JavaScript before </body>:
+       <script src="responsive.js"></script>
+    
+    <!-- NOTE: This file contains both CSS and JavaScript. For proper separation,
+    you may split into responsive.css and responsive.js files.
+    ========================================================================== -->
+
+<!-- ==========================================================================
+     CSS STYLES
+     ========================================================================== -->
+<style>
+    /* ─── CSS VARIABLES (Shared across all pages) ─── */
+    :root {
+        --gold: #C9A84C;
+        --gold-light: #E8CB7A;
+        --gold-dim: rgba(201, 168, 76, 0.25);
+        --white: #F5F0E8;
+        --cream: #EDE3D0;
+        --dark: #0A0806;
+        --glass-bg: rgba(255, 255, 255, 0.06);
+        --glass-border: rgba(255, 255, 255, 0.12);
+        --glass-shadow: rgba(0, 0, 0, 0.4);
+    }
+
+    /* ─── BASE RESET (included for completeness) ─── */
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 28px 48px;
+        width: 100%;
+        position: relative;
+        z-index: 100;
+    }
+
+    .nav-logo {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        font-size: 1.25rem;
+        color: var(--white);
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-logo span {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold);
+        margin-bottom: 1px;
+    }
+
+    .nav-pill {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid var(--glass-border);
+        border-radius: 50px;
+        padding: 8px 12px;
+        box-shadow: 0 8px 32px var(--glass-shadow);
+    }
+
+    .nav-pill a {
+        color: rgba(245, 240, 232, 0.78);
+        text-decoration: none;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 7px 18px;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .nav-pill a:hover,
+    .nav-pill a.active {
+        color: var(--dark);
+        background: var(--white);
+    }
+
+    .nav-pill a.active {
+        color: var(--dark);
+        background: var(--white);
+    }
+
+    .btn-contact {
+        font-family: 'Barlow', sans-serif;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--dark);
+        background: var(--gold);
+        border: none;
+        border-radius: 50px;
+        padding: 10px 26px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+    }
+
+    .btn-contact:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(201, 168, 76, 0.5);
+    }
+
+    .btn-contact a {
+        color: var(--dark);
+        text-decoration: none;
+    }
+
+    /* ─── MOBILE HAMBURGER MENU (Hidden by default) ─── */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid var(--glass-border);
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 10px;
+        gap: 5px;
+        transition: all 0.3s ease;
+        z-index: 200;
+    }
+
+    .hamburger:hover {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .hamburger span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: var(--white);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ─── MOBILE MENU OVERLAY ─── */
+    .mobile-menu-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 8, 6, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 150;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .mobile-menu-overlay.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-menu-overlay a {
+        font-family: 'Barlow', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--white);
+        text-decoration: none;
+        padding: 12px 24px;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-menu-overlay a:hover,
+    .mobile-menu-overlay a.active {
+        color: var(--gold);
+    }
+
+    .mobile-menu-overlay .btn-contact {
+        margin-top: 20px;
+        font-size: 1rem;
+        padding: 14px 36px;
+    }
+
+    /* ─── VIGNETTE OVERLAY ─── */
+    .vignette {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.65) 100%);
+        pointer-events: none;
+    }
+
+    /* ─── GRAIN OVERLAY ─── */
+    .grain {
+        position: absolute;
+        inset: 0;
+        z-index: 6;
+        pointer-events: none;
+        opacity: 0.025;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        background-size: 200px;
+    }
+
+    /* ─── RESPONSIVE STYLES ─── */
+    
+    /* Tablet Breakpoint (max-width: 900px) */
+    @media (max-width: 900px) {
+        nav {
+            padding: 20px 24px;
+        }
+
+        .nav-pill a {
+            padding: 6px 12px;
+            font-size: 0.72rem;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+
+        .nav-pill {
+            display: none;
+        }
+
+        .btn-contact {
+            display: none;
+        }
+
+        /* Show contact button in mobile menu instead */
+        .mobile-menu-overlay .btn-contact {
+            display: inline-block;
+        }
+    }
+
+    /* Mobile Breakpoint (max-width: 600px) */
+    @media (max-width: 600px) {
+        .nav-pill {
+            display: none;
+        }
+
+        .nav-logo {
+            font-size: 1rem;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+
+        /* Hero content responsive adjustments */
+        .hero-content {
+            padding: 0 24px 36px;
+        }
+
+        .hero-inner {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .hero-left {
+            max-width: 100%;
+        }
+
+        .hero-headline {
+            font-size: clamp(2.2rem, 9vw, 3rem);
+        }
+
+        .hero-subline {
+            max-width: 100%;
+        }
+
+        .hero-actions {
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .hero-right {
+            align-items: flex-start;
+            width: 100%;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .stats-row {
+            gap: 20px;
+        }
+
+        .preview-card {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .scroll-hint {
+            display: none;
+        }
+    }
+
+    /* Extra Small Devices */
+    @media (max-width: 400px) {
+        nav {
+            padding: 16px 16px;
+        }
+
+        .nav-logo {
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+        }
+
+        .hamburger {
+            width: 36px;
+            height: 36px;
+        }
+
+        .hamburger span {
+            width: 16px;
+        }
+
+        .mobile-menu-overlay a {
+            font-size: 1.2rem;
+        }
+
+        .hero-content {
+            padding: 0 16px 28px;
+        }
+
+        .hero-headline {
+            font-size: clamp(1.3rem, 8vw, 2rem);
+        }
+    }
+
+    /* ─── NAVIGATION ANIMATIONS ─── */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    nav {
+        animation: fadeIn 0.8s 0.1s ease both;
+        opacity: 0;
+    }
+
+    /* ─── RESPONSIVE UTILITY CLASSES ─── */
+    
+    /* Hide on mobile */
+    .hide-mobile {
+        display: inline-block;
+    }
+    
+    @media (max-width: 900px) {
+        .hide-mobile {
+            display: none;
+        }
+    }
+
+    /* Hide on desktop */
+    .hide-desktop {
+        display: none;
+    }
+    
+    @media (max-width: 900px) {
+        .hide-desktop {
+            display: flex;
+        }
+    }
+
+    /* Container responsive adjustments */
+    .container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            padding: 0 16px;
+        }
+    }
+</style>
+
+<!-- ==========================================================================
+     NAVIGATION HTML TEMPLATE
+     Copy this HTML into your page's <body>
+     ==========================================================================
+
+<nav>
+    <a href="index.html" class="nav-logo">
+        <span></span>Logo
+    </a>
+    
+    <div class="nav-pill">
+        <a href="istiqlal.html" class="active">Istiqlal</a>
+        <a href="kakbah.html">Ka'bah</a>
+        <a href="egypt.html">Mesir</a>
+        <a href="baiturrahman.html">Aceh</a>
+    </div>
+    
+    <button class="btn-contact">
+        <a href="#contact">Contact</a>
+    </button>
+    
+    <!-- Mobile Hamburger Menu -->
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+    <a href="istiqlal.html">Istiqlal</a>
+    <a href="kakbah.html">Ka'bah</a>
+    <a href="egypt.html">Mesir</a>
+    <a href="baiturrahman.html">Aceh</a>
+    <button class="btn-contact">
+        <a href="#contact">Contact</a>
+    </button>
+</div>
+
+-->
+
+<!-- ==========================================================================
+     JAVASCRIPT
+     Include this script at the end of your <body> tag
+     ========================================================================== -->
+<script>
+/**
+ * Responsive Navigation JavaScript
+ * Handles mobile menu toggle, navigation active states, and responsive behavior
+ */
+
+(function() {
+    'use strict';
+
+    // DOM Elements
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navLinks = document.querySelectorAll('.nav-pill a, .mobile-menu-overlay a');
+    
+    // Mobile Menu Toggle
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // Navigation Active State
+    function setActiveNavigation() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    // Initialize active state
+    setActiveNavigation();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+
+    // Handle window resize - close mobile menu
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.innerWidth > 900 && mobileMenu && mobileMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }, 250);
+    });
+
+    // Add transition for body when mobile menu opens
+    if (mobileMenu) {
+        mobileMenu.style.transition = 'opacity 0.4s ease, visibility 0.4s ease';
+    }
+
+    // Expose global function for programmatic menu control
+    window.toggleMobileMenu = function() {
+        if (hamburger && mobileMenu) {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+    };
+
+    window.closeMobileMenu = function() {
+        if (hamburger && mobileMenu) {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+})();
+</script>
+
+<!-- ==========================================================================
+     AOS ANIMATION LIBRARY
+     Include in <head> for animations:
+     
+     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+     
+     Include before </body>:
+     
+     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+     <script>
+         AOS.init({
+             duration: 1000,
+             once: true,
+             offset: 100
+         });
+     </script>
+     ========================================================================== -->
